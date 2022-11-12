@@ -1,6 +1,7 @@
 extends Node2D
 
 var sleep_bar = 10
+var score = 0
 
 signal game_end()
 
@@ -16,10 +17,14 @@ func _display_health():
 func _on_emitter_place_tile():
 	_display_health()
 	sleep_bar -= 1
+	score += 10
+	if sleep_bar <= 0:
+		emit_signal("game_end")
 
 func _on_emitter_player_is_moving(is_moving):
 	if is_moving:
 		_display_health()
 		sleep_bar -= 1
-	if !is_moving && sleep_bar == 0:
+		score += 10
+	if !is_moving && sleep_bar <= 0:
 		emit_signal("game_end")
