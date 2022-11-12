@@ -5,6 +5,7 @@ export var play_area_size : Vector2
 signal hovered_tile(tile_pos, tile)
 signal tile_in_hand(tile)
 
+var startup = true
 var _last_hovered_tile = -1
 var _last_hovered_pos
 
@@ -13,6 +14,14 @@ enum _Position {
 	Right,
 	Bottom,
 	Left,
+}
+
+enum _Maptiles {
+	Corner = 10,
+	Cross = 11,
+	OnePath = 12,
+	Straight = 13,
+	TPath = 14
 }
 
 enum _PlaceTiles {
@@ -38,10 +47,16 @@ func _ready():
 	play_area_size.y += 2
 	_place_tiles()
 
+func _process(_delta):
+	if startup:
+		emit_signal("tile_in_hand", 10 + randi() % 5)
+		startup = false
+
 func _generate_map():
 	for x in (play_area_size.x):
 		for y in (play_area_size.y):
-			set_cell(x + 1, y + 1, 0)
+			var rand = 10 + randi() % 5
+			set_cell(x + 1, y + 1, rand)
 
 func _place_tiles():
 	for x in play_area_size.x:
@@ -76,7 +91,7 @@ func _allow_tile_place(position, pEnum):
 			position.x = play_area_size.x - 2
 			
 	var cell = get_cellv(position)
-	if cell == 0: return true
+	if cell != -1: return true
 	
 	return false
 
@@ -121,4 +136,5 @@ func _on_emitter_move_tile(placed_tile, tile_pos):
 		_move_tile(tile_pos, placed_tile, false, false)
 
 func _unhandled_input(_event):
-	_get_hovered_tile()
+	if !startup:
+		_get_hovered_tile()

@@ -1,7 +1,7 @@
 extends TileMap
 
 var last_pos
-var tile_to_place = 9
+var tile_to_place
 var current_tile
 var click_allowed
 
@@ -20,7 +20,8 @@ func _unhandled_input(_event):
 
 func _on_emitter_tile_in_hand(tile):
 	tile_to_place = tile
-	set_cellv(last_pos, tile_to_place)
+	if last_pos != null:
+		set_cellv(last_pos, tile_to_place)
 
 func _on_emitter_place_tile():
 	emit_signal("move_tile", tile_to_place, last_pos)
@@ -29,12 +30,10 @@ func _on_emitter_hovered_tile(tile_pos, hovered_tile):
 	if last_pos != null:
 			set_cellv(last_pos, -1)
 	
-	if hovered_tile != -1 && \
-	   hovered_tile != 0 && \
-	   hovered_tile != 1 && \
-	   hovered_tile != 2 && \
-	   hovered_tile != 3 && \
-	   hovered_tile != 4:
+	if hovered_tile == 5 || \
+	   hovered_tile == 6 || \
+	   hovered_tile == 7 || \
+	   hovered_tile == 8:
 		click_allowed = true
 		current_tile = hovered_tile
 		set_cellv(tile_pos, tile_to_place)
