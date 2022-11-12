@@ -1,16 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Tilemaps/Placeholder.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Tilemap/Map.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Baskic8.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/Tilemap/Inventory.gd" type="Script" id=4]
+[ext_resource path="res://Animation/Character.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://Scripts/Character.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/Inventory/SleepBar.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Inventory/BarBackground.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/SleepBar.gd" type="Script" id=9]
+[ext_resource path="res://Sprites/GoalBed.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Tilemap/Hover.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Goal.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 7 )
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -51,3 +67,93 @@ margin_right = 997.0
 margin_bottom = 446.0
 custom_fonts/font = SubResource( 1 )
 text = "Hand-Tile"
+
+[node name="Background2" type="Sprite" parent="UI"]
+position = Vector2( 826, 200 )
+scale = Vector2( 2, 1.595 )
+texture = ExtResource( 8 )
+
+[node name="SleepBar" type="Node2D" parent="UI"]
+position = Vector2( 0, -16 )
+script = ExtResource( 9 )
+
+[node name="Element" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 350 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element2" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 320 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element3" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 290 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element4" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 260 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element5" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 230 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element6" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 200 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element7" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element8" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 140 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element9" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 110 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Element10" type="Sprite" parent="UI/SleepBar"]
+position = Vector2( 825, 81 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="UI"]
+margin_left = 805.0
+margin_top = 372.0
+margin_right = 854.0
+margin_bottom = 409.0
+custom_fonts/font = SubResource( 3 )
+text = "ZzZ"
+
+[node name="Goal" type="Sprite" parent="."]
+position = Vector2( 288, 152 )
+texture = ExtResource( 10 )
+script = ExtResource( 13 )
+goal = Vector2( 288, 88 )
+
+[node name="Character" type="KinematicBody2D" parent="."]
+position = Vector2( 96, 88 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 64
+tile_size = 64
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Character"]
+frames = ExtResource( 5 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+position = Vector2( 0, 9 )
+shape = SubResource( 2 )

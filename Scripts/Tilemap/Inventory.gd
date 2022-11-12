@@ -14,5 +14,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_emitter_tile_in_hand(tile):
+func _on_emitter_tile_in_hand(tile, _flip_x, _flip_y, _transpose):
 	set_cell(14, 7, tile)
