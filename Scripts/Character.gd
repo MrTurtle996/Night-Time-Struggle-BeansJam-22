@@ -11,6 +11,7 @@ var velocity = Vector2()
 
 signal player_position(pos)
 signal player_is_moving(moving)
+signal has_new_position()
 
 func _ready():
 	new_position = position
@@ -54,3 +55,4 @@ func _physics_process(delta):
 	if new_position == position:
 		is_moving = false
 		emit_signal("player_is_moving", is_moving)
+		emit_signal("has_new_position")

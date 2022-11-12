@@ -24,8 +24,10 @@ func _ready():
 
 func _unhandled_input(_event):
 	if click_allowed && !player_is_moving && Input.is_action_just_pressed("mouse_click"):
+		get_node("../PlaceMusic").play()
 		emit_signal("place_tile")
 	if click_allowed && Input.is_action_just_pressed("mouse_click_right"):
+		get_node("../PlaceMusic").play()
 		_rotate_tile()
 
 func _rotate_tile():

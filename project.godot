@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="BeansJam-22"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Score="*res://Scripts/Score.gd"
+Music="*res://Prefabs/Music.tscn"
 
 [gui]
 
