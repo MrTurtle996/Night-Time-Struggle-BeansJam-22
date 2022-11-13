@@ -81,7 +81,7 @@ func _generate_map():
 			var rand_transpose = randi() % 2
 			set_cell(x + 1, y + 1, rand_tile,rand_flip_x, rand_flip_y, rand_transpose)
 			
-			if Vector2(x + 1, y + 1) != world_to_map(get_node("../Character").position):
+			if Vector2(x + 1, y + 1) != world_to_map(get_node("../Character").position) && Vector2(x + 1, y + 1) != world_to_map(get_node("../Goal").position):
 				var possibility = randi() % 100
 				if possibility < 20:
 					var drink = drinkScene.instance()

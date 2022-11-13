@@ -19,7 +19,6 @@ func delete_drink():
 func _on_Drink_body_entered(body):
 	if !set_active: return
 	
-	print(body.name)
 	if body.name == "Inventory":
 		Score.item = "Coffee"
 		delete_drink()
