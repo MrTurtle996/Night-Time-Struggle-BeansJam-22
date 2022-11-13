@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Tilemaps/Placeholder.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Tilemap/Map.gd" type="Script" id=2]
@@ -13,9 +13,12 @@
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Tilemap/Hover.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/Goal.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Cloud.gd" type="Script" id=14]
 [ext_resource path="res://Sounds/Block Break 1.wav" type="AudioStream" id=15]
 [ext_resource path="res://Sounds/Fruit collect 1.wav" type="AudioStream" id=16]
 [ext_resource path="res://Sounds/Hit damage 1.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sprites/Cloud1.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Cloud2.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -39,6 +42,13 @@ extents = Vector2( 10, 7 )
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 11 )
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 68.0
+margin_top = 68.0
+margin_right = 701.0
+margin_bottom = 509.0
+color = Color( 0.223529, 0.223529, 0.223529, 1 )
+
 [node name="Map" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
@@ -51,6 +61,22 @@ format = 1
 script = ExtResource( 12 )
 
 [node name="UI" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="UI"]
+position = Vector2( -64, 128 )
+texture = ExtResource( 18 )
+script = ExtResource( 14 )
+start = Vector2( 1136, 128 )
+end = Vector2( -64, 128 )
+speed = 8.0
+
+[node name="Sprite2" type="Sprite" parent="UI"]
+position = Vector2( -88, 576 )
+texture = ExtResource( 19 )
+script = ExtResource( 14 )
+start = Vector2( 1104, 576 )
+end = Vector2( -88, 576 )
+speed = 5.0
 
 [node name="Background" type="ColorRect" parent="UI"]
 margin_left = 825.0
@@ -226,8 +252,9 @@ tile_data = PoolIntArray( 0, 15, 0, 1, 15, 0, 2, 15, 0, 3, 15, 0, 4, 15, 0, 5, 1
 script = ExtResource( 4 )
 
 [node name="Goal" type="Sprite" parent="."]
-position = Vector2( 288, 152 )
+position = Vector2( 288, 158 )
 texture = ExtResource( 10 )
+offset = Vector2( 0, 7.5 )
 script = ExtResource( 13 )
 
 [node name="Character" type="KinematicBody2D" parent="."]

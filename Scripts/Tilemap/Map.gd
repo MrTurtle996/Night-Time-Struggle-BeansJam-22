@@ -249,11 +249,11 @@ func _move_tile(start, tile, on_x_axis, positive, flip_x, flip_y, transpose):
 	
 	_place_tiles()
 	var new_drink_possibility = randi() % 100
-	if Score.item == "" && new_drink_possibility < 30:
+	if Score.item == "" && new_drink_possibility < 35:
 		Score.item = "Coffee"
 	if Score.item == "":
 		var new_sheep_possibility = randi() % 100
-		if new_sheep_possibility < 100:
+		if new_sheep_possibility < 20:
 			Score.item = "Sheep"
 	emit_signal("tile_in_hand", tile, tFlip_x, tFlip_y, tTranspose)
 

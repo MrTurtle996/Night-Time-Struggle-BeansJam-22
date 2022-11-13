@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Tutorial3.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Baskic8.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/Sheep.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Drink.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+extra_spacing_top = 12
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 559.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = "Auf der Map findest du diese Items verteilt"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 152, 112 )
+scale = Vector2( 1.75, 1.75 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 160, 296 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 96.0
+margin_right = 772.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 2 )
+text = "Der Kaffee fuellt deine
+Energie wieder komplett auf"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 280.0
+margin_right = 631.0
+margin_bottom = 335.0
+custom_fonts/font = SubResource( 3 )
+text = "Die Schafe rauben dir 4 Energie,
+bringen aber auch eine Menge Punkte"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 176.0
+margin_right = 930.0
+margin_bottom = 231.0
+custom_fonts/font = SubResource( 4 )
+text = "Ein Kaffee kann mit den Flur-Elementen von dem Spielfeld geschoben werden
+und wird bei der nächsten Platzierung mit gesetzt"
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 360.0
+margin_right = 669.0
+margin_bottom = 386.0
+custom_fonts/font = SubResource( 5 )
+text = "Schafe können nicht von der Map geschoben werden"
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 416.0
+margin_right = 1536.0
+margin_bottom = 558.0
+custom_fonts/font = SubResource( 6 )
+text = "Befindet sich keines dieser Items in deinem Inventar, besteht eine Chance,
+dass bei der nächsten Flur Platzierung eines erscheint
+
+Vor dem Platzieren kann dies im Inventar
+aber immer eingesehen werden"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 896.0
+margin_top = 512.0
+margin_right = 960.0
+margin_bottom = 560.0
+custom_fonts/font = SubResource( 7 )
+text = "->"
+script = ExtResource( 1 )
