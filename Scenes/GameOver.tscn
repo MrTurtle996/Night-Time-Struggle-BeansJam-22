@@ -6,7 +6,7 @@
 [ext_resource path="res://Scripts/EndScore.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/EndText.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/ScoreLose.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/ScoreLose.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35

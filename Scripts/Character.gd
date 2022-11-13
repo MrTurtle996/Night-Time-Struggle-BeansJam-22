@@ -42,8 +42,8 @@ func _physics_process(delta):
 		if velocity != Vector2():
 			if collision:
 				var meta = collision.collider.name
-				
-				if(meta == "Map"):
+
+				if(meta == "Map" || meta == "Inventory"):
 					position = current_position
 			else:
 				position = current_position
