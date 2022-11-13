@@ -1,19 +1,11 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var set_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func delete_drink():
 	var drinks = Score.drinks
@@ -25,10 +17,18 @@ func delete_drink():
 	self.queue_free()
 
 func _on_Drink_body_entered(body):
+	if !set_active: return
+	
+	print(body.name)
 	if body.name == "Inventory":
 		Score.item = "Coffee"
+		delete_drink()
 
-	elif body.name != "Map":
+	elif body.name == "Character":
 		Score.collected_coffee = true
+		delete_drink()
 	
-	delete_drink()
+
+
+func _on_Timer_timeout():
+	set_active = true

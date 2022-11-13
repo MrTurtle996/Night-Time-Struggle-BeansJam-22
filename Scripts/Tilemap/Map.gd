@@ -226,14 +226,15 @@ func _move_tile(start, tile, on_x_axis, positive, flip_x, flip_y, transpose):
 		tFlip_x = next_flip_x
 		tFlip_y = next_flip_y
 		tTranspose = next_transpose
-		
+	
 	if Score.item != "":
 		match Score.item:
 			"Coffee":
 				var new_drink = drinkScene.instance()
-				new_drink.position = map_to_world(Vector2(item_pos))
-				new_drink.position.x += 32
-				new_drink.position.y += 32
+				var new_drink_position = map_to_world(Vector2(item_pos))
+				new_drink_position.x += 32
+				new_drink_position.y += 32
+				new_drink.position = new_drink_position
 				get_node("../Energy").add_child(new_drink)
 				Score.drinks.append(new_drink)
 				drink_pos.append(world_to_map(new_drink.position))
@@ -247,7 +248,6 @@ func _move_tile(start, tile, on_x_axis, positive, flip_x, flip_y, transpose):
 				sheep_pos.append(world_to_map(new_sheep.position))
 		Score.item = ""
 	
-	_place_tiles()
 	var new_drink_possibility = randi() % 100
 	if Score.item == "" && new_drink_possibility < 35:
 		Score.item = "Coffee"
@@ -256,6 +256,8 @@ func _move_tile(start, tile, on_x_axis, positive, flip_x, flip_y, transpose):
 		if new_sheep_possibility < 20:
 			Score.item = "Sheep"
 	emit_signal("tile_in_hand", tile, tFlip_x, tFlip_y, tTranspose)
+	
+	_place_tiles()
 
 func _on_emitter_player_position(pos):
 	player_pos = pos
